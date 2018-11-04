@@ -24,7 +24,8 @@ export default (req, res, { store, context, observableEpics, history }) => {
     const stylesheets = [
       res.locals.assetPath('bundle.css'),
       res.locals.assetPath('vendor.css'),
-    ];
+    ].filter(Boolean);
+
     const html = renderToNodeStream(
       <Html
         styles={stylesheets}

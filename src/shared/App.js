@@ -8,9 +8,9 @@ import routes from './routes';
 
 class Application extends PureComponent {
   render() {
-    const { store, history, isServerSide, location, context } = this.props;
+    const { store, history, isServerSide, location, routerContext } = this.props;
     const Router = isServerSide ? StaticRouter : ConnectedRouter;
-    const routeProps = isServerSide ? { location, context } : {};
+    const routeProps = isServerSide ? { location, context: routerContext } : { location };
     return (
       <Provider store={store}>
         <Router history={history} {...routeProps}>
