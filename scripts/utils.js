@@ -1,3 +1,4 @@
+/* eslint-disable */
 const chalk = require('chalk');
 
 const logMessage = (message, level = 'info') => {

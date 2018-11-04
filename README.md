@@ -7,9 +7,9 @@ Events Management SPA - Server side rendered single page app using reactjs offic
 ```
 
 # TODO
-* Add redux to both client/server
-* Setup side effect for both client/server (server side use react-redux-epic)
-* Add react-router to both client/server
+* ~~Add redux to both client/server~~ [DONE]
+* Setup side effect for both client/server (server side use react-redux-epic) [DONE]
+* Add react-router to both client/server [DONE]
     * Client: Use connected-react-router
     * Server: combineEpics, combineReducers based on route to pre-fetch data before render
 * Implement asyncComponent (utilize React.lazy and React.suspense)
