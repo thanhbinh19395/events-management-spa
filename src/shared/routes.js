@@ -1,6 +1,7 @@
-import App from './App';
+import MasterLayout from './components/Layout/MasterLayout';
 import AboutPage from './pages/AboutPage';
-import BlogPage from './pages/BlogPage';
+import UserListPage from './pages/UserListPage.container';
+import HomePage from './pages/HomePage';
 
 import {
   // asyncComponent,
@@ -9,24 +10,28 @@ import {
 
 const routes = [
   {
-    component: App,
+    component: MasterLayout,
     path: parentRoute => `${parentRoute}/`,
     routes: [
       {
-        path: parentRoute => `${parentRoute}/about`,
+        path: parentRoute => `${parentRoute}/`,
         exact: true,
-        component: AboutPage,
-        // component: asyncComponent(() => import('./pages/AboutPage')),
+        component: HomePage.component,
       },
       {
-        path: parentRoute => `${parentRoute}/blog`,
+        path: parentRoute => `${parentRoute}/users`,
         exact: true,
-        component: BlogPage,
+        component: UserListPage.component,
+        loadData: UserListPage.loadData,
+      },
+      {
+        path: parentRoute => `${parentRoute}/about`,
+        exact: true,
+        component: AboutPage.component,
+        loadData: AboutPage.loadData,
       },
     ],
   },
 ];
 
 export default makeRouteConfig(routes);
-
-

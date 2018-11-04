@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*! © CREATE-REACT-APP */
 'use strict';
 

@@ -1,3 +1,4 @@
+/* eslint-disable */
 const webpack = require('webpack');
 const rimraf = require('rimraf');
 
@@ -11,7 +12,7 @@ const generateStaticHTML = async () => {
     const nodemon = require('nodemon');
     const fs = require('fs');
     const puppeteer = require('puppeteer');
-    const port = await choosePort('localhost', 8505);
+    const port = await choosePort('localhost', 3005);
 
     process.env.PORT = port;
 
