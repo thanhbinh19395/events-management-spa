@@ -1,19 +1,24 @@
 import React from 'react';
 import { renderToString } from 'react-redux-epic';
 import { renderToNodeStream } from 'react-dom/server';
+import { I18nextProvider } from 'react-i18next';
 
 import Application from '../../shared/App';
 import Html from './Html';
 
 export default (req, res, { store, context, observableEpics, history }) => {
   renderToString(
-    (<Application
-      store={store}
-      routerContext={context}
-      location={req.path}
-      history={history}
-      isServerSide
-    />),
+    (
+      <I18nextProvider i18n={req.i18n}>
+        <Application
+          store={store}
+          routerContext={context}
+          location={req.path}
+          history={history}
+          isServerSide
+        />
+      </I18nextProvider>
+    ),
     observableEpics,
     /* eslint-disable-next-line consistent-return */
   ).subscribe(({ markup }) => {

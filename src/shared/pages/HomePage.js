@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Helmet } from 'react-helmet';
+import { withNamespaces } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 class HomePage extends PureComponent {
   head() {
@@ -12,17 +14,21 @@ class HomePage extends PureComponent {
   }
 
   render() {
+    const { t } = this.props;
     return (
       <div>
         {this.head()}
+        <h2>{t('title')}</h2>
         Welcome to Events Management SPA
       </div>
     );
   }
 }
 
-HomePage.propTypes = {};
+HomePage.propTypes = {
+  t: PropTypes.any.isRequired,
+};
 
 export default {
-  component: HomePage,
+  component: withNamespaces()(HomePage),
 };

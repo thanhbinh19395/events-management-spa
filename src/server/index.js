@@ -5,8 +5,10 @@ import bodyParser from 'body-parser';
 import manifestHelpers from 'express-manifest-helpers';
 import proxy from 'express-http-proxy';
 import path from 'path';
-
+import i18nextMiddleware from 'i18next-express-middleware';
 import dotenv from 'dotenv';
+import i18next from './configuration/i18next';
+
 import paths from '../../config/paths';
 import errorMiddleware from './middlewares/errorMiddleware';
 import reactRouterMiddleware from './middlewares/reactRouterMiddleware';
@@ -41,8 +43,19 @@ app.use(
   }),
 );
 
+
+app.use(
+  i18nextMiddleware.handle(i18next, {
+    removeLngFromUrl: false,
+  }),
+);
+
+// static resource
+app.use(express.static('public'));
+
 app.use(errorMiddleware);
 app.use(reactRouterMiddleware);
+
 
 app.listen(process.env.PORT || 3000, () => {
   /* eslint-disable-next-line no-console */
